@@ -1,0 +1,14 @@
+h1. jbx_multiple_upload
+
+Allows you to upload multiple images simultaneously. See Extensions tab for configuration.
+
+This plugin is a modification of the fpx_image_import plugin.
+
+h2. Usage
+
+Just activate!
+
+h2. Credits
+
+* "Dirk Steins":http://dirksteins.de/ for fpx_image_import
+* "Jon-Michael Deldin":http://jmdeldin.com/ for inspiration / functions
