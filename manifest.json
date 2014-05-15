@@ -1,0 +1,11 @@
+{
+    "name": "jbx_multiple_image_upload",
+    "description": "Multiple Image Upload",
+    "version": "0.4.0",
+    "type": 3,
+    "author": "Jonas Bach",
+    "author_uri": "https://github.com/jbach",
+    "order": 5,
+    "flags": 0,
+    "help": {"file" : ["./README.textile"]}
+}

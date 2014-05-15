@@ -1,0 +1,19 @@
+{
+    "name": "jbach/jbx_multiple_image_upload",
+    "description": "Multiple Image Upload Plugin for Textpattern",
+    "keywords": ["textpattern", "plugin", "multiple", "image", "upload"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Jonas Bach",
+            "email": "hallo@jonasbach.de"
+        }
+    ],
+    "minimum-stability": "stable",
+    "type": "textpattern-plugin",
+    "require": {
+        "php": ">=5.2.0",
+        "textpattern/lock": "4.3.*,4.4.*,4.5.*",
+        "textpattern/installer": "*"
+    }
+}
