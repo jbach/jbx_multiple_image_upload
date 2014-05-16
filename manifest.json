@@ -6,6 +6,6 @@
     "author": "Jonas Bach",
     "author_uri": "https://github.com/jbach",
     "order": 5,
-    "flags": 0,
+    "flags": 1,
     "help": {"file" : ["./README.textile"]}
 }

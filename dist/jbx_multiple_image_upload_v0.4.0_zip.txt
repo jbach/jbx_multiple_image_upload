@@ -1,0 +1,55 @@
+# Name: jbx_multiple_image_upload v0.4.0
+# Multiple Image Upload
+# Author: Jonas Bach
+# URL: https://github.com/jbach
+# Recommended load order: 5
+# .....................................................................
+# This is a plugin for Textpattern - http://textpattern.com/
+# To install: textpattern > admin > plugins
+# Paste the following text into the "Install plugin" box:
+# .....................................................................
+
+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
