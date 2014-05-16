@@ -30,18 +30,18 @@ class jbx_MIU{
 	 * @var array
 	 */
 	protected static $preferences = array(
-		array('id'=>'fileslimit', 'label'=>'Max. Files Limit', 'descr'=>'The number of files you can add to the batch.', 'type'=>0, 'standard'=>20),
-		array('id'=>'thumb', 'label'=>'Create thumbnail', 'descr'=>'If a file thumb-imagename.ext is found the thumbnail will still be imported.', 'type'=>1, 'standard'=>'1'),
-		array('id'=>'thumbcrop', 'label'=>'Crop thumbnail', 'descr'=>'The thumbnail shall be cropped.', 'type'=>1, 'standard'=>'0'),
-		array('id'=>'thumbx', 'label'=>'Thumbnail width', 'descr'=>'May be 0 if thumbnail height is >0 and crop disabled.', 'type'=>0, 'standard'=>150),
-		array('id'=>'thumby', 'label'=>'Thumbnail height', 'descr'=>'May be 0 if thumbnail width is >0 and crop disabled.', 'type'=>0, 'standard'=>0),
-		array('id'=>'thumbhint', 'label'=>'Thumbnail icon', 'descr'=>'Add d small looking glass icon to thumbnail.', 'type'=>1, 'standard'=>'0'),
-		array('id'=>'thumbgreyhint', 'label'=>'Grey bar at bottom of thumb', 'descr'=>'Grey bar at bottom of thumbnail, use it with hint.', 'type'=>1, 'standard'=>'0'),
-		array('id'=>'resize', 'label'=>'Resize image', 'descr'=>'Resize the image (what a surprise).', 'type'=>1, 'standard'=>'0'),
-		array('id'=>'sharpen', 'label'=>'Sharpen image', 'descr'=>'Claims to result in better quality resize.', 'type'=>1, 'standard'=>'0'),
-		array('id'=>'imgx', 'label'=>'Resize to width', 'descr'=>'Width to resize image to (may be 0 if height >0).', 'type'=>0, 'standard'=>640),
-		array('id'=>'imgy', 'label'=>'Resize to height', 'descr'=>'Height to resize image to (may be 0 if width >0).', 'type'=>0, 'standard'=>480),
-		array('id'=>'importinfo', 'label'=>'Import additional info', 'descr'=>'Import meta info into caption.', 'type'=>2, 'standard'=>'none'),
+		'fileslimit' => array('label'=>'Max. Files Limit', 'descr'=>'The number of files you can add to the batch.', 'type'=>0, 'default'=>20),
+		'thumb' =>array('label'=>'Create thumbnail', 'descr'=>'If a file thumb-imagename.ext is found the thumbnail will still be imported.', 'type'=>1, 'default'=>'1'),
+		'thumbcrop' => array('label'=>'Crop thumbnail', 'descr'=>'The thumbnail shall be cropped.', 'type'=>1, 'default'=>'0'),
+		'thumbx' => array('label'=>'Thumbnail width', 'descr'=>'May be 0 if thumbnail height is >0 and crop disabled.', 'type'=>0, 'default'=>150),
+		'thumby'=> array('label'=>'Thumbnail height', 'descr'=>'May be 0 if thumbnail width is >0 and crop disabled.', 'type'=>0, 'default'=>0),
+		'thumbhint'=> array('label'=>'Thumbnail icon', 'descr'=>'Add d small looking glass icon to thumbnail.', 'type'=>1, 'default'=>'0'),
+		'thumbgreyhint'=> array('label'=>'Grey bar at bottom of thumb', 'descr'=>'Grey bar at bottom of thumbnail, use it with hint.', 'type'=>1, 'default'=>'0'),
+		'resize'=> array('label'=>'Resize image', 'descr'=>'Resize the image (what a surprise).', 'type'=>1, 'default'=>'0'),
+		'sharpen'=> array('label'=>'Sharpen image', 'descr'=>'Claims to result in better quality resize.', 'type'=>1, 'default'=>'0'),
+		'imgx'=> array('label'=>'Resize to width', 'descr'=>'Width to resize image to (may be 0 if height >0).', 'type'=>0, 'default'=>640),
+		'imgy'=> array('label'=>'Resize to height', 'descr'=>'Height to resize image to (may be 0 if width >0).', 'type'=>0, 'default'=>480),
+		'importinfo'=> array('label'=>'Import additional info', 'descr'=>'Import meta info into caption.', 'type'=>2, 'default'=>'none'),
 	);
 
 	/**
@@ -72,13 +72,17 @@ class jbx_MIU{
 	public function render_prefs($event, $step){
 		$msg = '';
 
+		if($step === 'update'){
+			$this->update_prefs();
+			$msg = gTxt('Preferences saved');
+		}
 		pageTop(gTxt('Multiple Image Upload'), $msg);
 		
 		// Generate Preferences Table
 		$out = hed(gTxt('Multiple Image Upload - Preferences'), 1);
 		$out .= startTable($this->prefix_id('preferences'), 'center', 5);
-		foreach (self::$preferences as $pref) {
-			$out .= $this->render_pref($pref);
+		foreach (self::$preferences as $key => $pref) {
+			$out .= $this->render_pref($key, $pref);
 		}
 		
 		// render save button
@@ -94,14 +98,14 @@ class jbx_MIU{
 	 * @param  array $pref preference array
 	 * @return string      <tr> containing the preference
 	 */
-	private function render_pref($pref){
+	private function render_pref($id, $pref){
+		$value = $this->get_pref($id);
+		$id = $this->prefix_id($id);
+
 		// render label
-		$out = fLabelCell(gTxt($pref['label']), '', $this->prefix_id($pref['id']));
+		$out = fLabelCell(gTxt($pref['label']), '', $id);
 
 		// render field
-		$id = $this->prefix_id($pref['id']);
-		$value = $this->get_pref($pref['id']);
-
 		switch($pref['type']){
 			case 2:
 				$out .= td(selectInput($id, array(gTxt('None') => '', 'EXIF'=>'exif', 'IPTC'=>'iptc'), $value));
@@ -148,7 +152,7 @@ class jbx_MIU{
 	 * @return mixed     stored preference
 	 */
 	private function get_pref($id){
-		return get_pref($this->prefix($id));
+		return get_pref($this->prefix($id), self::$preferences[$id]['default']);
 	}
 
 	/**
