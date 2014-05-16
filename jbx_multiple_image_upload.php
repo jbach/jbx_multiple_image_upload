@@ -78,7 +78,7 @@ class jbx_MIU{
 		
 		// Generate Preferences Table
 		$out = hed(gTxt('Multiple Image Upload - Preferences'), 1);
-		$out .= startTable($this->prefix_id('preferences'), 'center', 5);
+		$out .= startTable($this->prefix('preferences'), 'center', 5);
 		foreach (self::$preferences as $key => $pref) {
 			$out .= $this->render_pref($key, $pref);
 		}
@@ -98,7 +98,7 @@ class jbx_MIU{
 	 */
 	private function render_pref($id, $pref){
 		$value = $this->get_pref($id);
-		$id = $this->prefix_id($id);
+		$id = $this->prefix($id);
 
 		// render label
 		$out = fLabelCell(gTxt($pref['label']), '', $id);
@@ -131,9 +131,9 @@ class jbx_MIU{
 	 */
 	private function update_prefs(){
 		foreach (self::$preferences as $key => $pref) {
-			$this->set_pref($key, gps($this->prefix_id($key)));
+			$this->set_pref($key, gps($this->prefix($key)));
 		}
-		txp_die('', '302', '?event=plugin_prefs.jbx_multiple_image_upload');
+		txp_die('', '302', '?event=plugin_prefs.'.self::$slug);
 	}
 
 	/**
@@ -143,15 +143,6 @@ class jbx_MIU{
 	 */
 	private function prefix($value){
 		return self::$prefix.$value;
-	}
-
-	/**
-	 * Get prefixed HTML id attribute
-	 * @param  string $value unprefixed id
-	 * @return string        prefixed id
-	 */
-	private function prefix_id($value){
-		return self::$slug . '_' . $value;
 	}
 
 	/**
