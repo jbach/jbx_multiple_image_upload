@@ -96,7 +96,7 @@ class jbx_MIU{
 	 */
 	private function render_pref($pref){
 		// render label
-		$out = fLabelCell($pref['label'], '', $this->prefix_id($pref['id']));
+		$out = fLabelCell(gTxt($pref['label']), '', $this->prefix_id($pref['id']));
 
 		// render field
 		$id = $this->prefix_id($pref['id']);
@@ -117,7 +117,7 @@ class jbx_MIU{
 		}
 
 		// render help
-		$out .= td($pref['descr']);
+		$out .= td(gTxt($pref['descr']));
 
 		// render save
 		
