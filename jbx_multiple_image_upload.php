@@ -70,13 +70,11 @@ class jbx_MIU{
 	 * @param  string $step  the step being called
 	 */
 	public function render_prefs($event, $step){
-		$msg = '';
-
 		if($step === 'update'){
 			$this->update_prefs();
-			$msg = gTxt('Preferences saved');
 		}
-		pageTop(gTxt('Multiple Image Upload'), $msg);
+
+		pageTop(gTxt('Multiple Image Upload'));
 		
 		// Generate Preferences Table
 		$out = hed(gTxt('Multiple Image Upload - Preferences'), 1);
@@ -129,6 +127,16 @@ class jbx_MIU{
 	}
 
 	/**
+	 * Update preferences from submitted form
+	 */
+	private function update_prefs(){
+		foreach (self::$preferences as $key => $pref) {
+			$this->set_pref($key, gps($this->prefix_id($key)));
+		}
+		txp_die('', '302', '?event=plugin_prefs.jbx_multiple_image_upload');
+	}
+
+	/**
 	 * Get prefixed string
 	 * @param  string $value unprefixed string
 	 * @return string        prefixed string
@@ -149,16 +157,27 @@ class jbx_MIU{
 	/**
 	 * Get preference from DB
 	 * @param  string $id field to get
-	 * @return mixed     stored preference
+	 * @return mixed      stored preference
 	 */
 	private function get_pref($id){
 		return get_pref($this->prefix($id), self::$preferences[$id]['default']);
 	}
 
 	/**
+	 * Set preference (update/insert)
+	 * @param string $id  unprefixed key of preference
+	 * @param string $val value to save
+	 */
+	private function set_pref($id, $val = '', $default = ''){
+		$default = ($default === '')? self::$preferences[$id]['default'] : $default;
+		$val = trim($val);
+		$val = ($val === '') ? $default : $val;
+		return set_pref($this->prefix($id), $val, self::$slug, 2);
+	}
+
+	/**
 	 * Recursive directory delete
 	 * @param  string $dirname path to directory
-	 * @return [type]          [description]
 	 */
 	private function rmdirr($dirname){
 		// Sanity check
