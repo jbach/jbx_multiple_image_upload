@@ -23,7 +23,10 @@
 		$el.insertBefore($target);
 
 		var $submit = $el.find('.jbx_submit');
+		var $upload_wrapper = $el.find('.jbx_upload_wrapper');
 		var $upload = $el.find('.jbx_upload').attr('id', randomId());
+		var $cat = $el.find('.jbx_category');
+		var errors = [];
 
 		// init uploadify
 		$upload.uploadify({
@@ -38,15 +41,45 @@
 			'fileTypeDesc': jbx_variables.strings.images,
 			'fileTypeExts': '*.gif; *.jpg; *.png',
 			'buttonClass': 'navlink',
+			'removeCompleted': false,
 			'onSelect' : function(file){
 				$submit.show();
+			},
+			'onUploadError': function(file, errorCode, errorMsg, errorString){
+				errors.push({
+					file: file,
+					msg: errorMsg,
+				});
+			},
+			'onUploadSuccess': function(file, data){
+				if(data !== '1'){
+					// error
+					$el.find('#'+file.id).addClass('uploadify-error');
+					$el.find('#'+file.id).find('.uploadify-progress-bar').css('width','1px');
+					$el.find('#'+file.id).find('.data').html(' - ' + data);
+					errors.push({
+						file: file,
+						msg: data
+					});
+				}
+			},
+			'onQueueComplete': function(queue){
+				if(errors.length > 0){
+					$('<div class="jbx_error alert-block error">'+jbx_variables.strings.errors+'</div>').insertBefore($submit);
+				}else{
+					window.location.reload();
+				}
 			}
 		});
 
 		// start upload
 		$submit.on('click', function(e){
 			e.preventDefault();
-			$upload.uploadify('upload');
+			errors = [];
+			$upload.uploadify('settings', 'formData', {'category': $cat.val()});
+			$upload.uploadify('upload', '*');
+			$submit.hide();
+			$upload.uploadify('disable', true);
 		});
 	};
 
