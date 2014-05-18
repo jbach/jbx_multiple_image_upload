@@ -2,7 +2,14 @@
 	if(typeof jbx_variables === 'undefined'){
 		return;
 	}
-	var markup = $('<div class="jbx_wrapper"><h2>' + jbx_variables.strings.upload_multiple + '</h2><p>' + jbx_variables.strings.cat_help + '</p><label>' + jbx_variables.strings.cat_title + ' <input type="text" class="jbx_category" name="jbx_category" /></label><div class="jbx_upload_wrapper"><input type="file" name="file_upload" class="jbx_upload" /></div><button type="button" class="jbx_submit publish">'+ jbx_variables.strings.upload_button +'</button><h2>' + jbx_variables.strings.upload_single + '</h2></div>');
+	var $markup = $('<div class="jbx_wrapper"><h2>' + jbx_variables.strings.upload_multiple + '</h2><p>' + jbx_variables.strings.cat_help + '</p><label>' + jbx_variables.strings.cat_title + ' <select class="jbx_category" name="jbx_category"></select></label><div class="jbx_upload_wrapper"><input type="file" name="file_upload" class="jbx_upload" /></div><button type="button" class="jbx_submit publish">'+ jbx_variables.strings.upload_button +'</button><h2>' + jbx_variables.strings.upload_single + '</h2></div>');
+
+	// add categories
+	var cats = '<option value=""></option>';
+	$.each(jbx_variables.categories, function(i, cat){
+		cats += '<option value="'+ cat.name +'">'+ cat.title +'</option>';
+	});
+	$markup.find('.jbx_category').html(cats);
 	
 	var randomId = function(){
 		return 'jbx_upload_' + (Math.floor(Math.random() * 999999));
@@ -10,7 +17,7 @@
 
 	var initUploadify = function(){
 		var $target = $(this);
-		var $el = markup.clone();
+		var $el = $markup.clone();
 
 		// insert markup
 		$el.insertBefore($target);
