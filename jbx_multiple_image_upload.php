@@ -31,16 +31,6 @@ class jbx_MIU{
 	 */
 	protected static $preferences = array(
 		'fileslimit' => array('label'=>'Max. Files Limit', 'descr'=>'The number of files you can add to the batch.', 'type'=>0, 'default'=>20),
-		'thumb' =>array('label'=>'Create thumbnail', 'descr'=>'If a file thumb-imagename.ext is found the thumbnail will still be imported.', 'type'=>1, 'default'=>'1'),
-		'thumbcrop' => array('label'=>'Crop thumbnail', 'descr'=>'The thumbnail shall be cropped.', 'type'=>1, 'default'=>'0'),
-		'thumbx' => array('label'=>'Thumbnail width', 'descr'=>'May be 0 if thumbnail height is >0 and crop disabled.', 'type'=>0, 'default'=>150),
-		'thumby'=> array('label'=>'Thumbnail height', 'descr'=>'May be 0 if thumbnail width is >0 and crop disabled.', 'type'=>0, 'default'=>0),
-		'thumbhint'=> array('label'=>'Thumbnail icon', 'descr'=>'Add d small looking glass icon to thumbnail.', 'type'=>1, 'default'=>'0'),
-		'thumbgreyhint'=> array('label'=>'Grey bar at bottom of thumb', 'descr'=>'Grey bar at bottom of thumbnail, use it with hint.', 'type'=>1, 'default'=>'0'),
-		'resize'=> array('label'=>'Resize image', 'descr'=>'Resize the image (what a surprise).', 'type'=>1, 'default'=>'0'),
-		'sharpen'=> array('label'=>'Sharpen image', 'descr'=>'Claims to result in better quality resize.', 'type'=>1, 'default'=>'0'),
-		'imgx'=> array('label'=>'Resize to width', 'descr'=>'Width to resize image to (may be 0 if height >0).', 'type'=>0, 'default'=>640),
-		'imgy'=> array('label'=>'Resize to height', 'descr'=>'Height to resize image to (may be 0 if width >0).', 'type'=>0, 'default'=>480),
 		'importinfo'=> array('label'=>'Import additional info', 'descr'=>'Import meta info into caption.', 'type'=>2, 'default'=>'none'),
 	);
 
