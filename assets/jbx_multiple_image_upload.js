@@ -23,6 +23,9 @@
 			'swf'		: jbx_variables.paths.swf,
 			'uploader'	: jbx_variables.paths.upload,
 			'auto'		: false,
+			'formData'  : {
+				'_txp_token': jbx_variables.token
+			},
 			'buttonText': jbx_variables.strings.browse,
 			'fileSizeLimit': jbx_variables.fileSizeLimit,
 			'fileTypeDesc': jbx_variables.strings.images,
