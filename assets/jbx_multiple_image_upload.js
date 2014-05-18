@@ -22,6 +22,8 @@
 			'uploader'	: jbx_variables.paths.upload,
 			'auto'		: false,
 			'buttonText': jbx_variables.strings.browse,
+			'fileSizeLimit': jbx_variables.fileSizeLimit,
+			'fileTypeDesc': jbx_variables.strings.images,
 			'buttonClass': 'navlink',
 			'onSelect' : function(file){
 				$submit.show();

@@ -30,7 +30,6 @@ class jbx_MIU{
 	 * @var array
 	 */
 	protected static $preferences = array(
-		'fileslimit' => array('label'=>'Max. Files Limit', 'descr'=>'The number of files you can add to the batch.', 'type'=>0, 'default'=>20),
 		'importinfo'=> array('label'=>'Import additional info', 'descr'=>'Import meta info into caption.', 'type'=>2, 'default'=>'none'),
 	);
 
@@ -154,6 +153,7 @@ class jbx_MIU{
 	 * @todo: use render_asset
 	 */
 	public function render_js(){
+		global $file_max_upload_size;
 		$script = '';
 
 		// pass variables to JS
@@ -164,7 +164,9 @@ class jbx_MIU{
 				'swf' => '?event='.self::$slug.'&step=swf',
 				'upload' => '?event='.self::$slug.'&step=upload'
 			),
+			'fileSizeLimit' => $file_max_upload_size,
 			'strings' => array(
+				'images' => gTxt('Image files'),
 				'upload_multiple' => gTxt('Upload Multiple Images'),
 				'upload_single' => gTxt('Upload Single Image'),
 				'upload_button' => gTxt('Upload'),
