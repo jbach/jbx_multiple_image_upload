@@ -121,15 +121,6 @@ class jbx_MIU{
 	public function handle_upload(){
 		global $path_to_site, $img_dir;
 
-		// file size maxed out POST Content-Length (todo: fix)
-		if (isset($_SERVER['CONTENT_LENGTH'])){
-			$max_post_size = (int)ini_get('post_max_size')*1024*1024;
-			if($_SERVER['CONTENT_LENGTH'] > $max_post_size){
-				txp_status_header('401 Unauthorized');
-				die(upload_get_errormsg(UPLOAD_ERR_INI_SIZE));
-			}
-		}
-
 		$event = ''; // satisfies txp_image use of $event global
 		include_once txpath . '/include/txp_image.php';
 
@@ -139,6 +130,7 @@ class jbx_MIU{
 		error_log(gps('category'));
 		
 		if(is_array($msg)){
+			// success
 			die('1');
 		}else{
 			// error
