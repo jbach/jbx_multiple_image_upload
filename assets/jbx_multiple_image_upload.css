@@ -1,8 +1,8 @@
-#jbx_submit{
+.jbx_submit{
 	display: none;
 }
 
-#jbx_wrapper h2:last-child{
+.jbx_wrapper h2:last-child{
 	margin-top: 2em;
 }
 
