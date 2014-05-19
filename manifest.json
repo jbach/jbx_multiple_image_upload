@@ -1,7 +1,7 @@
 {
     "name": "jbx_multiple_image_upload",
     "description": "Multiple Image Upload",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "type": 3,
     "author": "Jonas Bach",
     "author_uri": "https://github.com/jbach",
