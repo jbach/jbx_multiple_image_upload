@@ -2,10 +2,10 @@
 	if(typeof jbx_variables === 'undefined'){
 		return;
 	}
-	var $markup = $('<div class="jbx_wrapper"><h2>' + jbx_variables.strings.upload_multiple + '</h2><label>' + jbx_variables.strings.cat_title + ' <select class="jbx_category" name="jbx_category"></select></label><div class="jbx_upload_wrapper"><input type="file" name="file_upload" class="jbx_upload" /></div><button type="button" class="jbx_submit publish">'+ jbx_variables.strings.upload_button +'</button><h2>' + jbx_variables.strings.upload_single + '</h2></div>');
+	var $markup = $('<div class="jbx_wrapper"><h2>' + jbx_variables.strings.upload_multiple + '</h2><label>' + jbx_variables.strings.cat_title + ' <select class="jbx_category"></select></label><label class="jbx_new_category_wrap">'+ jbx_variables.strings.create_new_title+' <input type="text" class="jbx_new_category" /></label><div class="jbx_upload_wrapper"><input type="file" name="file_upload" class="jbx_upload" /></div><button type="button" class="jbx_submit publish">'+ jbx_variables.strings.upload_button +'</button><h2>' + jbx_variables.strings.upload_single + '</h2></div>');
 
 	// add categories
-	var cats = '<option value=""></option>';
+	var cats = '<option value=""></option><option value="create_new">'+ jbx_variables.strings.create_new +'</option>';
 	$.each(jbx_variables.categories, function(i, cat){
 		cats += '<option value="'+ cat.name +'">'+ cat.title +'</option>';
 	});
@@ -26,8 +26,22 @@
 		var $upload_wrapper = $el.find('.jbx_upload_wrapper');
 		var $upload = $el.find('.jbx_upload').attr('id', randomId());
 		var $cat = $el.find('.jbx_category');
+		var $new_cat_wrapper = $el.find('.jbx_new_category_wrap');
+		var $new_cat = $el.find('.jbx_new_category');
 		var $window = $(window);
 		var errors = [];
+
+		// show / hide new category
+		$cat.on('change', function(){
+			if($cat.val() === 'create_new'){
+				// show
+				$new_cat_wrapper.css('display', 'block');
+			}else{
+				// hide
+				$new_cat_wrapper.hide();
+				$new_cat.val('');
+			}
+		});
 
 		// init uploadify
 		$upload.uploadify({
@@ -80,7 +94,7 @@
 			errors = [];
 
 			// start upload
-			$upload.uploadify('settings', 'formData', {'category': $cat.val()});
+			$upload.uploadify('settings', 'formData', {'category': $cat.val(), 'new_category': $new_cat.val()});
 			$upload.uploadify('upload', '*');
 
 			// deactivate buttons

@@ -3,6 +3,11 @@
 	margin-left: 5px;
 }
 
+.jbx_new_category_wrap{
+	display: none;
+	margin: 1em 0;
+}
+
 .jbx_submit{
 	display: none;
 }
