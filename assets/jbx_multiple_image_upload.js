@@ -26,6 +26,7 @@
 		var $upload_wrapper = $el.find('.jbx_upload_wrapper');
 		var $upload = $el.find('.jbx_upload').attr('id', randomId());
 		var $cat = $el.find('.jbx_category');
+		var $window = $(window);
 		var errors = [];
 
 		// init uploadify
@@ -64,6 +65,7 @@
 				}
 			},
 			'onQueueComplete': function(queue){
+				$window.off('beforeunload.jbx');
 				if(errors.length > 0){
 					$('<div class="jbx_error alert-block error">'+jbx_variables.strings.errors+'</div>').insertBefore($submit);
 				}else{
@@ -73,13 +75,22 @@
 		});
 
 		// start upload
-		$submit.on('click', function(e){
+		$submit.one('click', function(e){
 			e.preventDefault();
 			errors = [];
+
+			// start upload
 			$upload.uploadify('settings', 'formData', {'category': $cat.val()});
 			$upload.uploadify('upload', '*');
+
+			// deactivate buttons
 			$submit.hide();
 			$upload.uploadify('disable', true);
+
+			// prevent accidental closing
+			$window.on('beforeunload.jbx', function(){
+				return jbx_variables.strings.closewarning;
+			});
 		});
 	};
 
