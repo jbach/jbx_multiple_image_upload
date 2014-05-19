@@ -1,6 +1,6 @@
 jbx_multiple_image_upload
 =========================
-**[Download](https://github.com/jbach/jbx_multiple_image_upload/raw/master/dist/jbx_multiple_image_upload_v0.5.0_zip.txt)**
+**[Plugin](https://github.com/jbach/jbx_multiple_image_upload/raw/master/dist/jbx_multiple_image_upload_v0.5.0_zip.txt) | [Packagist](https://packagist.org/packages/jbach/jbx_multiple_image_upload)**
 
 ## Install
 1. [Copy Plugin code](https://github.com/jbach/jbx_multiple_image_upload/raw/master/dist/jbx_multiple_image_upload_v0.5.0_zip.txt)
