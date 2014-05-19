@@ -27,7 +27,7 @@ class jbx_MIU{
 	 * @var array
 	 */
 	protected static $preferences = array(
-		'importinfo'=> array('label'=>'Import additional info', 'descr'=>'Import meta info into caption.', 'type'=>2, 'default'=>'none'),
+		//'importinfo'=> array('label'=>'Import additional info', 'descr'=>'Import meta info into caption.', 'type'=>2, 'default'=>'none'),
 	);
 
 	/**
@@ -58,12 +58,12 @@ class jbx_MIU{
 	 */
 	public function __construct(){
 		add_privs(self::$slug, '1');
-		add_privs('plugin_prefs.'.self::$slug, '1');
+		//add_privs('plugin_prefs.'.self::$slug, '1');
 		register_callback(array($this, 'handle_request'), self::$slug, '', 1);
 		register_callback(array($this, 'inject_assets'), 'admin_side', 'head_end');
-		register_callback(array($this, 'render_prefs'), 'plugin_prefs.'.self::$slug);
-		register_callback(array($this, 'install'), 'plugin_lifecycle.'.self::$slug, 'installed');
-		register_callback(array($this, 'uninstall'), 'plugin_lifecycle.'.self::$slug, 'deleted');
+		//register_callback(array($this, 'render_prefs'), 'plugin_prefs.'.self::$slug);
+		//register_callback(array($this, 'install'), 'plugin_lifecycle.'.self::$slug, 'installed');
+		//register_callback(array($this, 'uninstall'), 'plugin_lifecycle.'.self::$slug, 'deleted');
 	}
 
 	/**
