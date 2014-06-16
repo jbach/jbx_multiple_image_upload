@@ -1,4 +1,4 @@
-# Name: jbx_multiple_image_upload v0.5.2
+# Name: jbx_multiple_image_upload v0.5.3
 # Multiple Image Upload
 # Author: Jonas Bach
 # URL: https://github.com/jbach
@@ -11,7 +11,7 @@
 
 H4sIAAAAAAAAA4y9167szJald131FD8KAo662aikN0dqoel90ibdTYPee0+9vLhPdUklQBJ0
 sXZmkpERjIg55/hGrlzc8d8h9O//+/p39O//MsR9/i//y/p3GPv7vzTJ9d/7vdvqqcv/e93H
-Zf7f96kb4+xPA+Lv/3Lky1qPw59Xb2vwX7F/hf88x//+L/G+VePy5wUE/v1flHGI17+YOK3+
+Zf7f96kb4+xPA+Lv/3Lky1qPw59Xb2vwX7F/Rf48x//+L/G+VePy5wUE/v1flHGI17+YOK3+
 /ci/nf/v+1L/Y6x33GrbpvXvn09Zb9We/Gs69p8m+fd3QH//lyxf06Wetv8xHvwe0v/Hpf0l
 /7m0v37/56X96S7vpj9P37H+x5F0zP4xMQwCqfflP3/+83/+57/+81//j538ZXZ7WQ9/zv+3
 f7vUv/6vOfz1v1Zx143/rflz5M8l/muW/29v088/p128rn/9WTVd/v3v//xPf4b4p7cPZxuX
@@ -666,4 +666,4 @@ OfltbNR+JT9/6D+XYQTtW+Tzh24WkIJokdRPbhGFT22x9eF37zPSL2jfPmVa3VKOcLDERT8N
 23PKrOvFfnr/Xgbx4vnTIiCaDaLE9Oxbr/buPXZ6uYW8/hnFbQFY7g4/DZQWF9+/X5Z5MdCA
 G7Ue9Zd+Cji76RX5+/d/HXxgvCwYSIUF1P7hs1sU6WcYBoAV5N3QJ4AtnYBf79UuXSbxb2vP
 cDUrHDDAS7z4mYMfmd3AJ5BW9QwAs9TrzzeAnz27u67R5w+R2V3iaAiuxtJJA0V1ijRxc0iQ
-5Gikk7ZmmyNtDP4RH37/1/8FK/vdr6DKAAA=
+5Gikk7ZmmyNtDP4RH37/1/8FoxHZK6DKAAA=

@@ -1,4 +1,4 @@
-# Name: jbx_multiple_image_upload v0.5.2
+# Name: jbx_multiple_image_upload v0.5.3
 # Multiple Image Upload
 # Author: Jonas Bach
 # URL: https://github.com/jbach
@@ -10,7 +10,7 @@
 # .....................................................................
 
 YToxNDp7czo0OiJuYW1lIjtzOjI1OiJqYnhfbXVsdGlwbGVfaW1hZ2VfdXBsb2FkIjtzOjc6
-InZlcnNpb24iO3M6NToiMC41LjIiO3M6NjoiYXV0aG9yIjtzOjEwOiJKb25hcyBCYWNoIjtz
+InZlcnNpb24iO3M6NToiMC41LjMiO3M6NjoiYXV0aG9yIjtzOjEwOiJKb25hcyBCYWNoIjtz
 OjEwOiJhdXRob3JfdXJpIjtzOjI0OiJodHRwczovL2dpdGh1Yi5jb20vamJhY2giO3M6MTE6
 ImRlc2NyaXB0aW9uIjtzOjIxOiJNdWx0aXBsZSBJbWFnZSBVcGxvYWQiO3M6NDoiaGVscCI7
 czowOiIiO3M6NDoiY29kZSI7czo1MTA5NDoiCi8qKgogKiBNdWx0aXBsZSBJbWFnZSBVcGxv
