@@ -49,7 +49,7 @@
 			'uploader'	: jbx_variables.paths.upload,
 			'auto'		: false,
 			'formData'  : {
-				'_txp_token': jbx_variables.token
+				'_jbx_token': jbx_variables.token
 			},
 			'buttonText': jbx_variables.strings.browse,
 			'fileSizeLimit': jbx_variables.fileSizeLimit,
@@ -83,7 +83,7 @@
 				if(errors.length > 0){
 					$('<div class="jbx_error alert-block error">'+jbx_variables.strings.errors+'</div>').insertBefore($submit);
 				}else{
-					window.location.reload();
+					window.location.replace('?event=image');
 				}
 			}
 		});
