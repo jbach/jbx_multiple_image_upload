@@ -49,7 +49,8 @@
 			'uploader'	: jbx_variables.paths.upload,
 			'auto'		: false,
 			'formData'  : {
-				'_jbx_token': jbx_variables.token
+				'_jbx_token': jbx_variables.token,
+				'_jbx_user': jbx_variables.user
 			},
 			'buttonText': jbx_variables.strings.browse,
 			'fileSizeLimit': jbx_variables.fileSizeLimit,
