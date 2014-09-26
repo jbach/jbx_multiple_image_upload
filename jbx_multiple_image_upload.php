@@ -58,7 +58,7 @@ class jbx_MIU{
 	 */
 	public function __construct(){
 		if(@txpinterface === 'admin'){
-			add_privs(self::$slug, '1');
+			add_privs(self::$slug, '1,2,3,4,5,6');
 			//add_privs('plugin_prefs.'.self::$slug, '1');
 			register_callback(array($this, 'handle_request'), self::$slug, '', 1);
 			register_callback(array($this, 'inject_assets'), 'admin_side', 'head_end');
